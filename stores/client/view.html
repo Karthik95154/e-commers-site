@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Purchases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f5f5f5;
+            background-image: url('https://res.cloudinary.com/ddgkiiqmc/image/upload/v1698421753/img/images_shqni9.jpg'); /* Add the path to your background image */
+            background-size: cover; /* Ensure the background image covers the entire screen */
+            padding: 0;
+        }
+
+        h1 {
+            color: #fffcfc;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        label, input {
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2a05fc;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #purchases {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        #purchases div {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>View Purchases</h1>
+    <form id="viewPurchasesForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">View Purchases</button>
+    </form>
+
+    <div id="purchases"></div>
+
+    <script>
+        document.getElementById('viewPurchasesForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+
+            fetch(`/viewPurchases/${email}`)
+                .then(response => response.json())
+                .then(data => {
+                    const purchasesDiv = document.getElementById('purchases');
+                    purchasesDiv.innerHTML = '';
+
+                    if (data.length === 0) {
+                        purchasesDiv.innerText = 'No purchases found for this email.';
+                    } else {
+                        data.forEach(purchase => {
+                            const purchaseInfo = document.createElement('div');
+                            purchaseInfo.innerText = `Item Name: ${purchase.itemName}, Total Amount: $${purchase.totalAmount}`;
+
+                            purchasesDiv.appendChild(purchaseInfo);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

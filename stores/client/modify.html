@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://res.cloudinary.com/ddgkiiqmc/image/upload/v1698420935/img/download_vhogzd.jpg'); /* Replace with actual path */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .operation-button {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .operation-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modify Orders</h1>
+    <div class="button-container">
+        <a href="index.html"><button class="operation-button" onclick="window.location.href='/select'">Select items</button></a>
+        <a href="delete.html"><button class="operation-button" onclick="window.location.href='/delete'">Delete items</button></a>
+        <a href="update.html"><button class="operation-button" onclick="window.location.href='/update'">Update items</button></a>
+        <a href="view.html"><button class="operation-button" onclick="window.location.href='/viewOrders'">View Orders</button></a>
+    </div>
+</body>
+</html>

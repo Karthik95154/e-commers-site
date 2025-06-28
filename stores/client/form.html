@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.squarespace-cdn.com/content/v1/5fe4caeadae61a2f19719512/1610911455028-UFLLTWNBO86V05D8NFRX/20.jpg'); /* Add the path to your background image */
+            background-size: cover; /* Ensure the background image covers the entire screen */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.5); /* Increase transparency by reducing the alpha value */
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background: none;
+        }
+
+        label, input, select {
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+        }
+
+        input, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[readonly] {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="/saveItem" method="post" id="orderForm">
+            <label for="item">Item Name:</label>
+            <input type="text" name="item" placeholder="Selected item" value="" readonly><br><br>
+
+            <label for="price"> Item Price:</label>
+            <input type="text" name="price" placeholder="Selected item" value="" readonly><br><br>
+
+            <label for="totalAmount">Total Amount:</label>
+            <input type="number" id="totalAmount" name="totalAmount" required readonly><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="Credit Card">Credit Card</option>
+                <option value="PayPal">PayPal</option>
+            </select><br><br>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function() {
+            var numItems = parseFloat(document.getElementById('Item Name').value);
+            var singleItemPrice = parseFloat(document.getElementById('ItemPrice').value);
+            document.getElementById('totalAmount').value = ( ItemPrice).toFixed(2);
+        });
+            const selectedItem = localStorage.getItem('selectedItem');
+            const selectedPrice = localStorage.getItem('selectedPrice');
+          
+            document.querySelector('input[name="item"]').value = selectedItem;
+            document.querySelector('input[name="price"]').value = selectedPrice;
+          
+    </script>
+</body>
+</html>
